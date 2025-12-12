@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -11,6 +16,7 @@
     ./modules/environment.nix
     ./modules/programs.nix
     ./modules/services.nix
+    inputs.home-manager.nixosModules.default
   ];
 
   # Bootloader.
@@ -24,13 +30,16 @@
 
   # Enable networking
   networking = {
-    hostName = "nixos"; # Define your hostname.
+    hostName = "desktop"; # Define your hostname.
     networkmanager.enable = true;
   };
 
   nix.settings = {
     auto-optimise-store = true;
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   # Set your time zone.
@@ -57,12 +66,21 @@
     users.valentin = {
       isNormalUser = true;
       description = "Valentin Rodriguez";
-      extraGroups = [ "networkmanager" "video" "wheel" ];
+      extraGroups = [
+        "networkmanager"
+        "video"
+        "wheel"
+      ];
       group = "users";
       shell = pkgs.zsh;
     };
     extraGroups.networkmanager.members = [ "root" ];
     defaultUserShell = pkgs.zsh;
+  };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users."valentin" = import ./home.nix;
   };
 
   fonts.packages = with pkgs; [
