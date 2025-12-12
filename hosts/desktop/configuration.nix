@@ -84,15 +84,18 @@
     };
   };
 
-  nixpkgs.config.permittedInsecurePackages = [ "electron-36.9.5" ];
-
   system = {
     # Automatic updates
     autoUpgrade = {
-      allowReboot = true;
       enable = true;
-      dates = "daily";
+      flake = inputs.self.outPath;
+      flags = [ "--update-input" "nixpkgs" "--commit-lock-file" "-L" ];
+      persistent = true;
+      operation = "switch";
+      dates = "6:00";
+      allowReboot = true;
     };
+
     # This value determines the NixOS release from which the default
     # settings for stateful data, like file locations and database versions
     # on your system were taken. It‘s perfectly fine and recommended to leave
