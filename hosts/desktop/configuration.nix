@@ -2,12 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -36,10 +31,7 @@
 
   nix.settings = {
     auto-optimise-store = true;
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    experimental-features = [ "nix-command" "flakes" ];
   };
 
   # Set your time zone.
@@ -66,11 +58,7 @@
     users.valentin = {
       isNormalUser = true;
       description = "Valentin Rodriguez";
-      extraGroups = [
-        "networkmanager"
-        "video"
-        "wheel"
-      ];
+      extraGroups = [ "networkmanager" "video" "wheel" ];
       group = "users";
       shell = pkgs.zsh;
     };

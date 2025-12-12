@@ -12,8 +12,6 @@
       kitty
       kittysay
       mpv
-      nixfmt
-      nil
       signal-desktop
       tree-sitter
       unzip
