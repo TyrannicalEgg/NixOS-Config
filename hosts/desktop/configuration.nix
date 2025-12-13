@@ -29,17 +29,7 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users = {
-    users.valentin = {
-      isNormalUser = true;
-      description = "Valentin Rodriguez";
-      extraGroups = [ "networkmanager" "video" "wheel" ];
-      group = "users";
-      shell = pkgs.zsh;
-    };
-    extraGroups.networkmanager.members = [ "root" ];
-    defaultUserShell = pkgs.zsh;
-  };
+  users.extraGroups.networkmanager.members = [ "root" ];
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
