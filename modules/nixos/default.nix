@@ -1,5 +1,5 @@
 { config, pkgs, inputs, ... }: {
-  imports = [ ./environment.nix ./users.nix ./services.nix ];
+  imports = [ ./environment.nix ./users.nix ./services.nix ./programs.nix ];
 
   boot.loader = {
     systemd-boot = {

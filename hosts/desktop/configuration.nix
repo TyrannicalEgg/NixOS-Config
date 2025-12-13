@@ -9,9 +9,10 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
-    ./modules
     ../../modules/nixos
   ];
+
+  environment = { systemPackages = with pkgs; [ heroic ludusavi ]; };
 
   services = {
     syncthing = {

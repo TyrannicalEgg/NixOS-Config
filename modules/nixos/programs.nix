@@ -3,6 +3,20 @@
     firefox = {
       enable = true;
       policies = {
+        DisableTelemetry = true;
+        DisableFirefoxStudies = true;
+        Preferences = {
+          "cookiebanners.service.mode.privateBrowsing" =
+            2; # Block cookie banners in private windows
+          "cookiebanners.service.mode" = 2; # Block cookie banners
+          "privacy.donottrackheader.enabled" = true;
+          "privacy.fingerprintingProtection" = true;
+          "privacy.resistFingerprinting" = true;
+          "privacy.trackingprotection.emailtracking.enabled" = true;
+          "privacy.trackingprotection.enabled" = true;
+          "privacy.trackingprotection.fingerprinting.enabled" = true;
+          "privacy.trackingprotection.socialtracking.enabled" = true;
+        };
         ExtensionSettings = {
           "uBlock0@raymondhill.net" = {
             install_url =
@@ -25,7 +39,7 @@
     nh = {
       enable = true;
       clean.enable = true;
-      clean.extraArgs = "--keep-since 4d --keep 3";
+      clean.extraArgs = "--keep-since 2d --keep 5";
       flake = "/etc/nixos";
     };
 
@@ -42,13 +56,14 @@
       wrapperFeatures.gtk = true;
       extraPackages = with pkgs; [
         brightnessctl
+        fuzzel
         grim
+        pavucontrol
         pulseaudio
         slurp
         swayidle
         swaylock
         swaynotificationcenter
-        fuzzel
         waybar
         wl-clipboard
       ];
@@ -69,9 +84,11 @@
       histFile = "$HOME/.cache/zsh/.zsh_history";
 
       shellAliases = {
-        edit = "sudo -e";
         la = "ls -A";
-        ll = "ls -Al";
+        ll = "ls -Alh";
+        icat = "kitten icat";
+        edit = "sudo -e";
+        rebuild = "nh os switch --ask --update";
       };
 
       ohMyZsh = {
@@ -81,6 +98,7 @@
           "aliases"
           "colored-man-pages"
           "command-not-found"
+          "compleat"
           "fzf"
           "git"
           "kitty"

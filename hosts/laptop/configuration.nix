@@ -7,7 +7,6 @@
     # <nixos-hardware/asus/zephyrus/ga401>
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./modules
     inputs.home-manager.nixosModules.default
     ../../modules/nixos
   ];
