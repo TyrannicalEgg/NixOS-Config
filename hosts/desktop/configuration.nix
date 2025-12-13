@@ -14,19 +14,9 @@
 
   bluetooth.enable = false;
   nvidiaDrivers.enable = true;
+  games.syncthing.enable = true;
 
-  environment = { systemPackages = with pkgs; [ heroic ludusavi ]; };
-
-  services = {
-    syncthing = {
-      enable = true;
-      group = "users";
-      user = "valentin";
-      dataDir = "/home/valentin/.local/share/syncthing";
-      databaseDir = "/home/valentin/.local/state/syncthing";
-      configDir = "/home/valentin/.config/syncthing";
-    };
-  };
+  environment.systemPackages = with pkgs; [ heroic ludusavi ];
 
   networking.hostName = "desktop";
 
