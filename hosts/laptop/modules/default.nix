@@ -1,1 +1,1 @@
-{ config, pkgs, inputs, ... }: { imports = [ ./programs.nix ./services.nix ]; }
+{ config, pkgs, inputs, ... }: { imports = [ ./programs.nix ]; }

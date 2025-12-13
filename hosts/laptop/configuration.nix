@@ -12,6 +12,9 @@
     ../../modules/nixos
   ];
 
+  services.xserver.videoDrivers = [ "nvidia" "amdgpu" ];
+  services.blueman.enable = true;
+
   # Enable networking
   networking.hostName = "laptop";
 

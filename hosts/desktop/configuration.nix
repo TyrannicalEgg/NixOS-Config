@@ -13,6 +13,19 @@
     ../../modules/nixos
   ];
 
+  services = {
+    syncthing = {
+      enable = true;
+      group = "users";
+      user = "valentin";
+      dataDir = "/home/valentin/.local/share/syncthing";
+      databaseDir = "/home/valentin/.local/state/syncthing";
+      configDir = "/home/valentin/.config/syncthing";
+    };
+
+    xserver.videoDrivers = [ "nvidia" ];
+  };
+
   networking.hostName = "desktop";
 
   time.hardwareClockInLocalTime = true;

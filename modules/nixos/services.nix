@@ -11,9 +11,5 @@
     openssh.enable = true;
 
     pipewire.enable = true;
-
-    xserver.videoDrivers = [ "nvidia" "amdgpu" ];
-
-    blueman.enable = true;
   };
 }
