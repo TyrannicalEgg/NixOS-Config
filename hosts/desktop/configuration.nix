@@ -13,35 +13,9 @@
     ../../modules/nixos
   ];
 
-  autoUpgrade.enable = true;
+  networking.hostName = "desktop";
 
-  # Bootloader.
-  boot.loader = {
-    systemd-boot = {
-      enable = true;
-      configurationLimit = 10;
-    };
-    efi.canTouchEfiVariables = true;
-  };
-
-  # Enable networking
-  networking = {
-    hostName = "desktop"; # Define your hostname.
-    networkmanager.enable = true;
-  };
-
-  nix.settings = {
-    auto-optimise-store = true;
-    experimental-features = [ "nix-command" "flakes" ];
-  };
-
-  # Set your time zone.
-  time = {
-    timeZone = "America/Chicago";
-    hardwareClockInLocalTime = true;
-  };
-
-  nixpkgs.config.allowUnfree = true;
+  time.hardwareClockInLocalTime = true;
 
   hardware = {
     graphics.enable = true;
@@ -70,19 +44,6 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users."valentin" = import ./home.nix;
-  };
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.victor-mono
-    nerd-fonts.fira-code
-    maple-mono.NF
-  ];
-
-  security = {
-    sudo-rs = {
-      enable = true;
-      execWheelOnly = true;
-    };
   };
 
   system.stateVersion = "25.05";
