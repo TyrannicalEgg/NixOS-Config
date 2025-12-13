@@ -1,10 +1,5 @@
 { lib, config, pkgs, ... }: {
   services = {
-    getty = {
-      autologinUser = "valentin";
-      autologinOnce = true;
-    };
-
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -16,6 +11,15 @@
     openssh.enable = true;
 
     gnome.gnome-keyring.enable = true;
+
+    syncthing = {
+      enable = true;
+      group = "users";
+      user = "valentin";
+      dataDir = "/home/valentin/.local/share/syncthing";
+      databaseDir = "/home/valentin/.local/state/syncthing";
+      configDir = "/home/valentin/.config/syncthing";
+    };
 
     xserver.videoDrivers = [ "nvidia" ];
   };
