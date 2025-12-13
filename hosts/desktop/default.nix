@@ -14,8 +14,7 @@
 
   networking.hostName = "desktop";
 
-  bluetooth.enable = false;
-  nvidiaDrivers.enable = true;
+  drivers.nvidia.enable = true;
   games.syncthing.enable = true;
   games.heroic.enable = true;
 

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }: {
+{ pkgs, ... }: {
   users = {
     extraGroups.networkmanager.members = [ "root" ];
     defaultUserShell = pkgs.zsh;

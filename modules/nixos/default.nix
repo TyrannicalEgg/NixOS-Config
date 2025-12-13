@@ -1,11 +1,10 @@
-{ config, pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }: {
   imports = [ 
     ./environment.nix 
     ./users.nix 
     ./services.nix 
     ./programs.nix 
-    ./bluetooth.nix 
-    ./nvidia.nix
+    ./drivers
     ./games
   ];
 
