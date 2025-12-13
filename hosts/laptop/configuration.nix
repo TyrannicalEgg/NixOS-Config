@@ -9,21 +9,21 @@
     # <nixos-hardware/asus/zephyrus/ga401>
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./modules/environment.nix
-    ./modules/programs.nix
-    ./modules/services.nix
+    ./modules
     inputs.home-manager.nixosModules.default
+    ../../modules/nixos
   ];
+
+  autoUpgrade.enable = true;
 
   # Bootloader.
   boot.loader = {
-    systemd-boot.enable = true;
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 10;
+    };
     efi.canTouchEfiVariables = true;
   };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable networking
   networking = {
@@ -32,7 +32,14 @@
   };
 
   # Set your time zone.
-  time.timeZone = "America/Chicago";
+  time = {
+    timeZone = "America/Chicago";
+    # hardwareClockInLocalTime = true;
+  };
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   users = {
     users.valentin = {
@@ -41,7 +48,6 @@
       group = "users";
       extraGroups = [ "networkmanager" "video" "wheel" ];
       shell = pkgs.zsh;
-      packages = with pkgs; [ ];
     };
     extraGroups.networkmanager.members = [ "root" ];
     defaultUserShell = pkgs.zsh;
@@ -78,18 +84,5 @@
     };
   };
 
-  system = {
-    # Automatic updates
-    autoUpgrade = {
-      enable = true;
-      flake = inputs.self.outPath;
-      flags = [ "--update-input" "nixpkgs" "--commit-lock-file" "-L" ];
-      persistent = true;
-      operation = "switch";
-      dates = "daily";
-      allowReboot = true;
-    };
-
-    stateVersion = "25.05";
-  };
+  system.stateVersion = "25.05";
 }
