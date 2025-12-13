@@ -18,18 +18,6 @@
   # Enable networking
   networking.hostName = "laptop";
 
-  users = {
-    users.valentin = {
-      isNormalUser = true;
-      description = "Valentin Rodriguez";
-      group = "users";
-      extraGroups = [ "networkmanager" "video" "wheel" ];
-      shell = pkgs.zsh;
-    };
-    extraGroups.networkmanager.members = [ "root" ];
-    defaultUserShell = pkgs.zsh;
-  };
-
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users."valentin" = import ./home.nix;

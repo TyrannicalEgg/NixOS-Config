@@ -1,5 +1,8 @@
 { config, pkgs, lib, inputs, ... }: {
   users = {
+    extraGroups.networkmanager.members = [ "root" ];
+    defaultUserShell = pkgs.zsh;
+
     users = {
       valentin = {
         description = "Valentin Rodriguez";
@@ -24,6 +27,5 @@
         password = "password";
       };
     };
-    defaultUserShell = pkgs.zsh;
   };
 }

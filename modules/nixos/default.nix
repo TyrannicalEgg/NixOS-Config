@@ -6,6 +6,7 @@
     ./programs.nix 
     ./bluetooth.nix 
     ./nvidia.nix
+    ./games
   ];
 
   boot.loader = {
