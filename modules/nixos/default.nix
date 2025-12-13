@@ -1,5 +1,6 @@
-{ config, pkgs, inputs, ... }:
-{
+{ config, pkgs, inputs, ... }: {
+  imports = [ ./environment.nix ];
+
   boot.loader = {
     systemd-boot = {
       enable = true;
@@ -32,12 +33,7 @@
   system.autoUpgrade = {
     enable = true;
     flake = inputs.self.outPath;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "--commit-lock-file"
-      "-L"
-    ];
+    flags = [ "--update-input" "nixpkgs" "--commit-lock-file" "-L" ];
     dates = "6:00";
     allowReboot = true;
   };

@@ -94,7 +94,6 @@
         theme = "half-life";
         plugins = [
           "aliases"
-          "alias-finder"
           "colored-man-pages"
           "command-not-found"
           "compleat"

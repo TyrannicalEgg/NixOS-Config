@@ -72,13 +72,23 @@
         edit = "sudo -e";
         la = "ls -A";
         ll = "ls -Al";
-        rebuild = "nh os switch --ask";
       };
 
       ohMyZsh = {
         enable = true;
         theme = "half-life";
-        plugins = [ "git" ];
+        plugins = [
+          "aliases"
+          "colored-man-pages"
+          "command-not-found"
+          "fzf"
+          "git"
+          "kitty"
+          "lol"
+          "vi-mode"
+          "you-should-use"
+          "zsh-interactive-cd"
+        ];
         customPkgs = with pkgs; [ zsh-you-should-use ];
       };
     };
