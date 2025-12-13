@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ inputs, ... }:
 
 {
   imports = [
@@ -15,8 +15,7 @@
   bluetooth.enable = false;
   nvidiaDrivers.enable = true;
   games.syncthing.enable = true;
-
-  environment.systemPackages = with pkgs; [ heroic ludusavi ];
+  games.heroic.enable = true;
 
   networking.hostName = "desktop";
 
