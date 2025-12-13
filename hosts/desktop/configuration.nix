@@ -12,6 +12,8 @@
     ../../modules/nixos
   ];
 
+  bluetooth.enable = false;
+
   environment = { systemPackages = with pkgs; [ heroic ludusavi ]; };
 
   services = {

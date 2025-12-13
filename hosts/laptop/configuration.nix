@@ -11,8 +11,9 @@
     ../../modules/nixos
   ];
 
+  bluetooth.enable = true;
+
   services.xserver.videoDrivers = [ "nvidia" "amdgpu" ];
-  services.blueman.enable = true;
 
   # Enable networking
   networking.hostName = "laptop";
@@ -32,18 +33,6 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users."valentin" = import ./home.nix;
-  };
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-    settings = {
-      General = {
-        Experimental = true;
-        FastConnectable = true;
-      };
-      Policy = { AutoEnable = true; };
-    };
   };
 
   system.stateVersion = "25.05";
