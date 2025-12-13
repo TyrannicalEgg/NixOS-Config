@@ -13,6 +13,7 @@
   ];
 
   bluetooth.enable = false;
+  nvidiaDrivers.enable = true;
 
   environment = { systemPackages = with pkgs; [ heroic ludusavi ]; };
 
@@ -25,24 +26,9 @@
       databaseDir = "/home/valentin/.local/state/syncthing";
       configDir = "/home/valentin/.config/syncthing";
     };
-
-    xserver.videoDrivers = [ "nvidia" ];
   };
 
   networking.hostName = "desktop";
-
-  time.hardwareClockInLocalTime = true;
-
-  hardware = {
-    graphics.enable = true;
-    nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = false;
-      open = true;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
-    };
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraGroups.networkmanager.members = [ "root" ];

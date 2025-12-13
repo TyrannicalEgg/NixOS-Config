@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }: {
+{ config, lib, ... }: {
   options.bluetooth.enable = lib.mkEnableOption "support for Bluetooth";
 
   config = lib.mkIf config.bluetooth.enable {
