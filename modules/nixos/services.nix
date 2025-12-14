@@ -3,11 +3,6 @@
   services = {
     gnome.gnome-keyring.enable = true;
 
-    getty = {
-      autologinUser = "valentin";
-      autologinOnce = true;
-    };
-
     openssh.enable = true;
 
     pipewire.enable = true;
