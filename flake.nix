@@ -23,12 +23,12 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
       desktop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          inputs.home-manager.nixosModules.default
+          home-manager.nixosModules.default
           ./hosts/desktop
         ];
       };
@@ -36,8 +36,7 @@
       laptop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          inputs.nixos-hardware.nixosModules.asus-zephyrus-ga401
-          inputs.home-manager.nixosModules.default
+          home-manager.nixosModules.default
           ./hosts/laptop
         ];
       };

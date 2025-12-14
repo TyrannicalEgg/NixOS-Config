@@ -4,10 +4,8 @@
 
 { inputs, ... }: {
   imports = [
-    # <nixos-hardware/asus/zephyrus/ga401>
-    # Include the results of the hardware scan.
+    inputs.nixos-hardware.nixosModules.asus-zephyrus-ga401
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.default
     ../../modules/nixos
   ];
 
@@ -21,6 +19,8 @@
   networking.hostName = "laptop";
 
   home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
     users."valentin" = import ./home.nix;
   };
