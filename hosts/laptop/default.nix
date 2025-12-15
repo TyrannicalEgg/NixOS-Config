@@ -10,8 +10,11 @@
   ];
 
   bluetooth.enable = true;
-  games.heroic.enable = true;
-  games.syncthing.enable = true;
+  games = {
+    syncthing.enable = true;
+    heroic.enable = true;
+    steam.enable = true;
+  };
 
   services.xserver.videoDrivers = [ "nvidia" "amdgpu" ];
 

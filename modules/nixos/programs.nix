@@ -41,13 +41,6 @@
       flake = "/etc/nixos";
     };
 
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-      localNetworkGameTransfers.openFirewall = true;
-    };
-
     sway = {
       enable = true;
       package = pkgs.swayfx;

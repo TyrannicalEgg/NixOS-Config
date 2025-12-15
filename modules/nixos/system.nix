@@ -20,6 +20,13 @@
     allowReboot = true;
   };
 
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 2d --keep 5";
+    flake = "/etc/nixos";
+  };
+
   services = {
     openssh.enable = true;
     gnome.gnome-keyring.enable = true;

@@ -5,16 +5,16 @@
 { inputs, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-    ../../modules/nixos
-  ];
+  imports = [ ./hardware-configuration.nix ../../modules/nixos ];
 
   networking.hostName = "desktop";
 
   drivers.nvidia.enable = true;
-  games.syncthing.enable = true;
-  games.heroic.enable = true;
+  games = {
+    syncthing.enable = true;
+    heroic.enable = true;
+    steam.enable = true;
+  };
 
   # home-manager = {
   #   extraSpecialArgs = { inherit inputs; };
