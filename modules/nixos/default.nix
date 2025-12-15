@@ -1,27 +1,12 @@
-{ pkgs, inputs, ... }: {
-  imports = [ 
-    ./environment.nix 
-    ./users.nix 
-    ./services.nix 
-    ./programs.nix 
+{ pkgs, ... }: {
+  imports = [
     ./drivers
     ./games
+    ./environment.nix
+    ./programs.nix
+    ./system.nix
+    ./users.nix
   ];
-
-  boot.loader = {
-    systemd-boot = {
-      enable = true;
-      configurationLimit = 10;
-    };
-    efi.canTouchEfiVariables = true;
-  };
-
-  security.sudo-rs = {
-    enable = true;
-    execWheelOnly = true;
-  };
-
-  networking.networkmanager.enable = true;
 
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
@@ -34,14 +19,4 @@
     nerd-fonts.fira-code
     maple-mono.NF
   ];
-
-  time.timeZone = "America/Chicago";
-
-  system.autoUpgrade = {
-    enable = true;
-    flake = inputs.self.outPath;
-    flags = [ "--update-input" "nixpkgs" "--commit-lock-file" "-L" ];
-    dates = "6:00";
-    allowReboot = true;
-  };
 }
