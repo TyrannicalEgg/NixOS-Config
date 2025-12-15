@@ -34,20 +34,6 @@
       vimAlias = true;
     };
 
-    nh = {
-      enable = true;
-      clean.enable = true;
-      clean.extraArgs = "--keep-since 2d --keep 5";
-      flake = "/etc/nixos";
-    };
-
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-      localNetworkGameTransfers.openFirewall = true;
-    };
-
     sway = {
       enable = true;
       package = pkgs.swayfx;

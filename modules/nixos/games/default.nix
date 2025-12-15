@@ -1,6 +1,1 @@
-{ ... }: {
-  imports = [
-    ./heroic.nix
-    ./syncthing.nix
-  ];
-}
+{ ... }: { imports = [ ./heroic.nix ./syncthing.nix ./steam.nix ]; }
