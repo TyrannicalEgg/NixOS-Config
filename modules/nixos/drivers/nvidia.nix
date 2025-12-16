@@ -5,6 +5,7 @@
 
   config = lib.mkIf config.drivers.nvidia.enable {
     services.xserver.videoDrivers = [ "nvidia" ];
+
     hardware = {
       graphics.enable = true;
       nvidia = {
@@ -13,5 +14,11 @@
         package = config.boot.kernelPackages.nvidiaPackages.latest;
       };
     };
+
+    programs.sway.extraOptions = 
+      lib.mkIf (config.drivers.nvidia.enable
+            && config.programs.sway.enable) [
+        "--unsupported-gpu"
+      ];
   };
 }

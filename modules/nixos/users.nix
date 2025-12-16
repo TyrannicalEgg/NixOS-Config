@@ -8,10 +8,7 @@
         group = "users";
         extraGroups = [ "networkmanager" "video" "wheel" ];
         isNormalUser = true;
-        packages = with pkgs;
-          [
-
-          ];
+        packages = [ ];
       };
 
       vulpes = {
@@ -20,7 +17,7 @@
         extraGroups = [ "networkmanager" "video" "wheel" ];
         isNormalUser = true;
         password = "password";
-        packages = with pkgs; [ freetube orca-slicer vintagestory ];
+        # packages = with pkgs; [ freetube orca-slicer vintagestory ];
       };
 
       ash = {
@@ -29,10 +26,7 @@
         extraGroups = [ "networkmanager" "video" "wheel" ];
         isNormalUser = true;
         password = "password";
-        packages = with pkgs;
-          [
-
-          ];
+        packages = [ ];
       };
     };
   };

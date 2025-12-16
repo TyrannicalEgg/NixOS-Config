@@ -39,9 +39,11 @@
       package = pkgs.swayfx;
       wrapperFeatures.gtk = true;
       extraPackages = with pkgs; [
+        autotiling-rs
         brightnessctl
         fuzzel
         grim
+        pamixer
         pavucontrol
         pulseaudio
         slurp
@@ -91,7 +93,7 @@
           "you-should-use"
           "zsh-interactive-cd"
         ];
-        customPkgs = with pkgs; [ zsh-you-should-use ];
+        customPkgs = [ pkgs.zsh-you-should-use ];
       };
     };
   };
