@@ -28,6 +28,8 @@
   };
 
   services = {
+    displayManager.sddm.enable = true;
+    desktopManager.plasma6.enable = true;
     openssh.enable = true;
     gnome.gnome-keyring.enable = true;
     pipewire.enable = true;

@@ -27,18 +27,34 @@
     nixosConfigurations = {
       desktop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-        modules = [
-          home-manager.nixosModules.default
-          ./hosts/desktop
-        ];
+        modules = [ home-manager.nixosModules.default ./hosts/desktop ];
       };
 
       laptop = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-        modules = [
-          home-manager.nixosModules.default
-          ./hosts/laptop
-        ];
+        modules = [ home-manager.nixosModules.default ./hosts/laptop ];
+      };
+
+      nixos = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/nixos ];
+      };
+
+      legion = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/legion ];
+      };
+
+      # l380y = nixpkgs.lib.nixosSystem {
+      #   specialArgs = {inherit inputs; };
+      #   modules = [
+      #     ./hosts/l380y
+      #   ];
+      # };
+
+      ttb550m = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/ttb550m ];
       };
     };
   };

@@ -1,28 +1,44 @@
 { pkgs, ... }: {
   environment = {
     systemPackages = with pkgs; [
+      # CLI
       ani-cli
       ani-skip
+      autotiling-rs
+      cmus
       fd
       fuzzel
       fzf
       gcc
       git
+      grim
       kitty
-      kittysay
       mpv
+      pamixer
       pavucontrol
       ripgrep
-      signal-desktop
+      starship
+      stow
+      tealdeer
       tree-sitter
+      unrar
       unzip
-      vesktop
       wget
+      yazi
       zathura
+      zoxide
+      # GUI
+      (discord.override {
+        withOpenASAR = true;
+        withVencord = true;
+      })
+      keepassxc
+      librewolf
+      signal-desktop
     ];
     shells = [ pkgs.zsh ];
-    loginShellInit = ''
-      [[ "$(tty)" == /dev/tty1 ]] && sway --unsupported-gpu
-    '';
+    # loginShellInit = ''
+    #   [[ "$(tty)" == /dev/tty1 ]] && sway --unsupported-gpu
+    # '';
   };
 }

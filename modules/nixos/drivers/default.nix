@@ -1,6 +1,1 @@
-{ ... }: {
-  imports = [ 
-    ./bluetooth.nix
-    ./nvidia.nix
-  ];
-}
+{ ... }: { imports = [ ./bluetooth.nix ./nvidia.nix ]; }

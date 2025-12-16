@@ -1,5 +1,7 @@
 { pkgs, ... }: {
+
   users = {
+    extraGroups.networkmanager.members = [ "root" ];
     defaultUserShell = pkgs.zsh;
 
     users = {
@@ -8,6 +10,7 @@
         group = "users";
         extraGroups = [ "networkmanager" "video" "wheel" ];
         isNormalUser = true;
+        password = "password";
         packages = with pkgs;
           [
 
@@ -15,12 +18,15 @@
       };
 
       vulpes = {
-        description = "Vampire Entity Vulpes";
+        description = "Crusacer Entity";
         group = "users";
         extraGroups = [ "networkmanager" "video" "wheel" ];
         isNormalUser = true;
         password = "password";
-        packages = with pkgs; [ freetube orca-slicer vintagestory ];
+        packages = with pkgs;
+          [
+
+          ];
       };
 
       ash = {

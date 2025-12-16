@@ -1,0 +1,21 @@
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ ... }:
+
+{
+  imports = [ ./hardware-configuration.nix ../../modules/nixos ];
+
+  networking.hostName = "legion";
+
+  bluetooth.enable = true;
+  drivers.nvidia.enable = true;
+  games = {
+    syncthing.enable = true;
+    heroic.enable = true;
+    steam.enable = true;
+  };
+
+  system.stateVersion = "25.05";
+}
