@@ -15,10 +15,8 @@
       };
     };
 
-    programs.sway.extraOptions = 
-      lib.mkIf (config.drivers.nvidia.enable
-            && config.programs.sway.enable) [
-        "--unsupported-gpu"
-      ];
+    programs.sway.extraOptions =
+      lib.mkIf (config.drivers.nvidia.enable && config.programs.sway.enable)
+      [ "--unsupported-gpu" ];
   };
 }

@@ -16,8 +16,6 @@
     steam.enable = true;
   };
 
-  services.xserver.videoDrivers = [ "nvidia" "amdgpu" ];
-
   # Enable networking
   networking.hostName = "laptop";
 
