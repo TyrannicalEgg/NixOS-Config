@@ -17,7 +17,6 @@
     flake = inputs.self.outPath;
     flags = [ "--update-input" "nixpkgs" "--commit-lock-file" "-L" ];
     dates = "6:00";
-    allowReboot = true;
   };
 
   programs.nh = {
@@ -28,10 +27,11 @@
   };
 
   services = {
-    # displayManager.sddm.enable = true;
-    # desktopManager.plasma6.enable = true;
-    openssh.enable = true;
     gnome.gnome-keyring.enable = true;
+    # displayManager.sddm.enable = lib.mkDefault true;
+    # desktopManager.plasma6.enable = lib.mkDefault true;
+    openssh.enable = true;
+    # kde.enable = true;
     pipewire.enable = true;
   };
 

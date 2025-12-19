@@ -9,7 +9,7 @@
 
   networking.hostName = "legion";
 
-  bluetooth.enable = true;
+  drivers.bluetooth.enable = true;
   drivers.nvidia.enable = true;
   games = {
     syncthing.enable = true;

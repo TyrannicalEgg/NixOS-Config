@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   programs = {
     # firefox = {
     #   enable = true;
@@ -38,6 +38,9 @@
       enable = true;
       package = pkgs.swayfx;
       wrapperFeatures.gtk = true;
+      extraOptions = lib.mkIf config.hardware.nvidia.enabled [ 
+        "--unsupported-gpu" 
+      ];
       extraPackages = with pkgs; [
         autotiling-rs
         brightnessctl

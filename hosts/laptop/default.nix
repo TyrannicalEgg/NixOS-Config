@@ -9,7 +9,7 @@
     ../../modules/nixos
   ];
 
-  bluetooth.enable = true;
+  drivers.bluetooth.enable = true;
   games = {
     syncthing.enable = true;
     heroic.enable = true;
