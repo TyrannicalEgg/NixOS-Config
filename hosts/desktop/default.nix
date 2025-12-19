@@ -9,6 +9,7 @@
 
   networking.hostName = "desktop";
 
+  firefox.enable = true;
   drivers.nvidia.enable = true;
   games = {
     syncthing.enable = true;

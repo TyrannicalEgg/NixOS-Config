@@ -28,11 +28,9 @@
 
   services = {
     gnome.gnome-keyring.enable = true;
-    # displayManager.sddm.enable = lib.mkDefault true;
+    displayManager.sddm.wayland.enable = true;
     # desktopManager.plasma6.enable = lib.mkDefault true;
     openssh.enable = true;
-    # kde.enable = true;
-    pipewire.enable = true;
   };
 
   time.timeZone = "America/Chicago";
