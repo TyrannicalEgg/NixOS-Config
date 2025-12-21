@@ -17,15 +17,7 @@
     steam.enable = true;
   };
 
-  # Enable networking
   networking.hostName = "laptop";
-
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
-    users."valentin" = import ./home.nix;
-  };
 
   system.stateVersion = "25.05";
 }
