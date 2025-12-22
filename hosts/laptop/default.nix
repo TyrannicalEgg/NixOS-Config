@@ -9,7 +9,6 @@
     ../../modules/nixos
   ];
 
-  firefox.enable = true;
   drivers.bluetooth.enable = true;
   games = {
     syncthing.enable = true;
