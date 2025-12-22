@@ -42,6 +42,10 @@
         async = true;
       };
 
+      setOptions = [
+        "CHASE_LINKS"
+      ];
+
       histSize = 10000;
       histFile = "$HOME/.cache/zsh/.zsh_history";
 

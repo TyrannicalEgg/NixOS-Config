@@ -7,8 +7,6 @@
 {
   imports = [ ./hardware-configuration.nix ../../modules/nixos ];
 
-  networking.hostName = "legion";
-
   drivers.bluetooth.enable = true;
   drivers.nvidia.enable = true;
   games = {

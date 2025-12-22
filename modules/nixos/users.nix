@@ -8,7 +8,6 @@
         group = "users";
         extraGroups = [ "networkmanager" "video" "wheel" ];
         isNormalUser = true;
-        packages = [ ];
       };
 
       vulpes = {
@@ -25,8 +24,7 @@
         group = "users";
         extraGroups = [ "networkmanager" "video" "wheel" ];
         isNormalUser = true;
-        password = "password";
-        packages = [ ];
+        initialPassword = "password";
       };
     };
   };

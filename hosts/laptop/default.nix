@@ -17,7 +17,5 @@
     steam.enable = true;
   };
 
-  networking.hostName = "laptop";
-
   system.stateVersion = "25.05";
 }

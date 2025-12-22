@@ -23,39 +23,39 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }: {
-    nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [ ./hosts/desktop ];
-      };
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
+    nixosConfigurations = let
+      hosts = [ 
+        "desktop"
+        "laptop"
+        "legion"
+        "nixos"
+        "ttb550m"
+      ];
 
-      laptop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [ ./hosts/laptop ];
+      mkHostConfig = host: {
+        ${host} = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [ 
+            ./hosts/${host}
+            { networking.hostName = "${host}"; }
+          ];
+        };
       };
+    in builtins.foldl' (configs: host: configs // mkHostConfig "${host}") {} hosts;
 
-      nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [ ./hosts/nixos ];
+    homeConfigurations = let
+      users = [
+        "ash"
+        "valentin"
+        "vulpes"
+      ];
+      mkUserConfig = user: {
+        ${user} = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = [ ./users/${user} ];
+        };
       };
-
-      legion = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [ ./hosts/legion ];
-      };
-
-      # l380y = nixpkgs.lib.nixosSystem {
-      #   specialArgs = {inherit inputs; };
-      #   modules = [
-      #     ./hosts/l380y
-      #   ];
-      # };
-
-      ttb550m = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [ ./hosts/ttb550m ];
-      };
-    };
+    in builtins.foldl' (configs: user: configs // mkUserConfig "${user}") {} users;
   };
 }

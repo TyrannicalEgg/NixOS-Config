@@ -7,8 +7,6 @@
 {
   imports = [ ./hardware-configuration.nix ../../modules/nixos ./drives.nix ];
 
-  networking.hostName = "ttb550m";
-
   drivers.bluetooth.enable = true;
   games = {
     syncthing.enable = true;

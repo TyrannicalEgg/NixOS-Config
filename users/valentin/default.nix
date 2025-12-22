@@ -1,17 +1,31 @@
-{ inputs, ... }: {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-    {
-      home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
-      home-manager.users.valentin = ./home.nix;
-    }
-  ];
-  users.users.valentin = {
-    description = "Valentin Rodriguez";
-    group = "users";
-    extraGroups = [ "networkmanager" "video" "wheel" ];
-    isNormalUser = true;
-    packages = [ ];
+{ pkgs, ... }: {
+  home = {
+    username = "valentin";
+    homeDirectory = "/home/valentin";
+    stateVersion = "25.05";
+
+    packages = with pkgs; [
+      cowsay
+      kittysay
+      tree
+      btop
+      bat
+      neofetch
+      ripgrep
+      jq
+      fzf
+    ];
+  };
+
+  programs = {
+    home-manager.enable = true;
+
+    git = {
+      enable = true;
+      settings.user = {
+        name = "TyrannicalEgg";
+        email = "valentinrdz0211@gmail.com";
+      };
+    };
   };
 }

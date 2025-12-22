@@ -3,8 +3,6 @@
 {
   imports = [ ./hardware-configuration.nix ../../modules/nixos ];
 
-  networking.hostName = "desktop";
-
   drivers.nvidia.enable = true;
   games = {
     syncthing.enable = true;
