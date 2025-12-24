@@ -42,7 +42,7 @@
           ];
         };
       };
-    in builtins.foldl' (configs: host: configs // mkHostConfig "${host}") {} hosts;
+    in builtins.foldl' (configs: host: configs // mkHostConfig "${host}") { } hosts;
 
     homeConfigurations = let
       users = [
@@ -50,12 +50,13 @@
         "valentin"
         "vulpes"
       ];
+
       mkUserConfig = user: {
         ${user} = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [ ./users/${user} ];
         };
       };
-    in builtins.foldl' (configs: user: configs // mkUserConfig "${user}") {} users;
+    in builtins.foldl' (configs: user: configs // mkUserConfig "${user}") { } users;
   };
 }

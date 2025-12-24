@@ -11,9 +11,8 @@
       enable = true;
       package = pkgs.swayfx;
       wrapperFeatures.gtk = true;
-      extraOptions = lib.mkIf config.hardware.nvidia.enabled [ 
-        "--unsupported-gpu" 
-      ];
+      extraOptions =
+        lib.mkIf config.hardware.nvidia.enabled [ "--unsupported-gpu" ];
       extraPackages = with pkgs; [
         autotiling-rs
         brightnessctl
@@ -42,9 +41,7 @@
         async = true;
       };
 
-      setOptions = [
-        "CHASE_LINKS"
-      ];
+      setOptions = [ "CHASE_LINKS" ];
 
       histSize = 10000;
       histFile = "$HOME/.cache/zsh/.zsh_history";
