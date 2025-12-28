@@ -1,21 +1,17 @@
 { pkgs, ... }: {
-  home = {
-    username = "valentin";
-    homeDirectory = "/home/valentin";
-    stateVersion = "25.05";
+  imports = [
+    ../../modules/home-manager
+  ];
 
-    packages = with pkgs; [
-      cowsay
-      kittysay
-      tree
-      btop
-      bat
-      neofetch
-      ripgrep
-      jq
-      fzf
-    ];
-  };
+  home.packages = with pkgs; [
+    kittysay
+    tree
+    btop
+    bat
+    ripgrep
+    jq
+    fzf
+  ];
 
   programs = {
     home-manager.enable = true;
@@ -28,4 +24,6 @@
       };
     };
   };
+
+  home.stateVersion = "25.05";
 }

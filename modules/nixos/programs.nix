@@ -65,7 +65,6 @@
           "fzf"
           "git"
           "kitty"
-          "lol"
           "vi-mode"
           "you-should-use"
           "zoxide"

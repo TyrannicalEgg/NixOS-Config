@@ -6,7 +6,6 @@
     ./programs.nix
     ./system.nix
     ./users.nix
-    ./firefox.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

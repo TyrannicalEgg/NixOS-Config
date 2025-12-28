@@ -54,7 +54,13 @@
       mkUserConfig = user: {
         ${user} = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          modules = [ ./users/${user} ];
+          modules = [
+            ./users/${user}
+            {
+              home.username = "${user}";
+              home.homeDirectory = "/home/${user}";
+            }
+          ];
         };
       };
     in builtins.foldl' (configs: user: configs // mkUserConfig "${user}") { } users;

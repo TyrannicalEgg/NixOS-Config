@@ -29,6 +29,7 @@
       keepassxc
       librewolf
       signal-desktop
+      zoxide
     ];
     shells = [ pkgs.zsh ];
     loginShellInit = ''
